@@ -117,37 +117,23 @@ angular.module('starter', ['ionic', 'login', 'sellbuy', 'sell', 'camerasplash', 
 
     .state('tab.friends', {
       url: '/friends',
-      views: {
-        'tab-friends': {
-          templateUrl: 'templates/tab-friends.html',
-          controller: 'FriendsCtrl'
-        }
-      }
-    })
-    .state('tab.friend-detail', {
-      url: '/friend/:friendId',
-      views: {
-        'tab-friends': {
-          templateUrl: 'templates/friend-detail.html',
-          controller: 'FriendDetailCtrl'
-        }
-      }
-    })
 
-    .state('tab.account', {
-      url: '/account',
+    // routing for settings page
+    .state('tab.settings', {
+      url: '/settings',
       views: {
-        'tab-account': {
-          templateUrl: 'templates/tab-account.html',
-          controller: 'AccountCtrl'
+        'tab-settings': {
+          templateUrl: 'modules/settings/settings.html',
+          controller: 'SettingsController'
         }
       }
     });
 
-  // if none of the above states are matched, use this as the fallback
-  // right now this defaults to the "Sell Desription" page
-  // Changed to login page for testing of authorization; will change back soon
-  $urlRouterProvider.otherwise('/login');
-  // $urlRouterProvider.otherwise('/tab/sell');
+  // If a user has a session token, direct them to the buy screen; else, direct them to login/signup
+  if(Parse.User.current()) {
+    $urlRouterProvider.otherwise('/tab/sell');
+  } else {
+    $urlRouterProvider.otherwise('/login');
+  }
 });
 
