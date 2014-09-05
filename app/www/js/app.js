@@ -6,7 +6,7 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 
-angular.module('starter', ['ionic', 'login', 'sellbuy', 'sell', 'camerasplash', 'buybrowse', 'buyconfirm', 'buythankyou', 'ui.router']) 
+angular.module('starter', ['ionic', 'login', 'sellbuy', 'sell', 'camerasplash', 'buybrowse', 'buyconfirm', 'buythankyou', 'settings', 'ui.router']) 
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -115,9 +115,6 @@ angular.module('starter', ['ionic', 'login', 'sellbuy', 'sell', 'camerasplash', 
       }
     })
 
-    .state('tab.friends', {
-      url: '/friends',
-
     // routing for settings page
     .state('tab.settings', {
       url: '/settings',
@@ -131,7 +128,7 @@ angular.module('starter', ['ionic', 'login', 'sellbuy', 'sell', 'camerasplash', 
 
   // If a user has a session token, direct them to the buy screen; else, direct them to login/signup
   if(Parse.User.current()) {
-    $urlRouterProvider.otherwise('/tab/sell');
+    $urlRouterProvider.otherwise('tab/buy');
   } else {
     $urlRouterProvider.otherwise('/login');
   }
