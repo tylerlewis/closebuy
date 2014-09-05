@@ -132,5 +132,5 @@ angular.module('starter', ['ionic', 'login', 'sellbuy', 'sell', 'camerasplash', 
   } else {
     $urlRouterProvider.otherwise('/login');
   }
-});
 
+});

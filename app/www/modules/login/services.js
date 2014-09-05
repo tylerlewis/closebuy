@@ -60,4 +60,6 @@ angular.module('login.services', [])
     signupUser: signupUser,
     logoutUser: logoutUser
   };
+
 });
+
